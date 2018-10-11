@@ -1,5 +1,5 @@
 
-// \ovo jr PRVI MODULE
+// BUDGET CONTROLLER   module1 
 var budgetController = (function(){
  
     // somecode
@@ -8,28 +8,51 @@ var budgetController = (function(){
 
 
 
-// Drugi Module
+// UI CONTROLLER   module2
 var UIController = (function() {
     
-    //some code
+    return{
+        getInput: function(){
+            return{
+                
+            type: document.querySelector('.add__type').value, // Will be ither Inc or exp  (income or expense)
+            description: document.querySelector('.add__description').value,
+            value: document.querySelector('.add__value').value
+                
+            }
+            
+        }
+    }
     
 })();
 
 
 
-var ctrlAddItem = function() {
-      // 1. Get the field input data
-     
-     // 2. Add the Item to the budget controller
-     
-     // 3. Add the item to the UI
-     
-     // 4. Calculate the budget on the UI
-    console.log('pusikurac')
-};
+
+
+
+
+// GLOBAL APP CONTROLLER
+var controller = (function(budgetCtrl, UICtrl){
+
+
+    var ctrlAddItem = function() {
+          // 1. Get the field input data
+        var input = UICtrl.getInput();
+        console.log(input);
+
+         // 2. Add the Item to the budget controller
+
+         // 3. Add the item to the UI
+
+         // 4. Calculate the budget
+
+        // 5. Display the  budget on the UI
+        console.log('it works')
+}
+
 
 // Treci module/ Jonas je lud ako konta da cu ovo naucit ovako na prvu
-var controller = (function(budgetCtrl, UICtrl){
    
     document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
     
