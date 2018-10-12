@@ -44,14 +44,26 @@ var UIController = (function() {
 
 // GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, UICtrl){
+
+    var setupEventListeners = function(){
+    document.querySelector(DOM.inputButton).addEventListener('click', ctrlAddItem);
+    
+    document.addEventListener('keypress', function(event) {
+        if (event.keyCode === 13 || event.which === 13) {
+                ctrlAddItem();
+    }
+
+    });
+        
+        
+ }
     
     var DOM = UICtrl.getDomStrings();
 
-
     var ctrlAddItem = function() {
-          // 1. Get the field input data
-        var input = UICtrl.getInput();
-        console.log(input);
+         
+        // 1. Get the field input data
+            var input = UICtrl.getInput();
 
          // 2. Add the Item to the budget controller
 
@@ -61,25 +73,19 @@ var controller = (function(budgetCtrl, UICtrl){
 
         // 5. Display the  budget on the UI
 
-}
-
-
-// Treci module/ Jonas je lud ako konta da cu ovo naucit ovako na prvu
-   
-    document.querySelector(DOM.inputButton).addEventListener('click', ctrlAddItem);
+};
     
-    document.addEventListener('keypress', function(event) {
-        if (event.keyCode === 13 || event.which === 13) {
-                ctrlAddItem();
+    return{
+        init: function(){
+            console.log('Application has started.');
+            setupEventListeners();
+        }
     }
-
-    });
-    
     
 })(budgetController, UIController);
 
 
-
+controller.init();
 
 
 
