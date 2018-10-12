@@ -11,16 +11,26 @@ var budgetController = (function(){
 // UI CONTROLLER   module2
 var UIController = (function() {
     
+    var DOMStrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputButton: '.add__btn'
+    }
+    
     return{
         getInput: function(){
             return{
                 
-            type: document.querySelector('.add__type').value, // Will be ither Inc or exp  (income or expense)
-            description: document.querySelector('.add__description').value,
-            value: document.querySelector('.add__value').value
+            type: document.querySelector(DOMStrings.inputType).value, // Will be ither Inc or exp  (income or expense)
+            description: document.querySelector(DOMStrings.inputDescription).value,
+            value: document.querySelector(DOMStrings.inputValue).value
                 
             }
             
+        },
+        getDomStrings: function(){
+            return DOMStrings;
         }
     }
     
@@ -34,6 +44,8 @@ var UIController = (function() {
 
 // GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, UICtrl){
+    
+    var DOM = UICtrl.getDomStrings();
 
 
     var ctrlAddItem = function() {
@@ -48,13 +60,13 @@ var controller = (function(budgetCtrl, UICtrl){
          // 4. Calculate the budget
 
         // 5. Display the  budget on the UI
-        console.log('it works')
+
 }
 
 
 // Treci module/ Jonas je lud ako konta da cu ovo naucit ovako na prvu
    
-    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+    document.querySelector(DOM.inputButton).addEventListener('click', ctrlAddItem);
     
     document.addEventListener('keypress', function(event) {
         if (event.keyCode === 13 || event.which === 13) {
