@@ -7,13 +7,47 @@ var budgetController = (function(){
 })();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////
 ////////////////Module 2: UI CONTROLLER ///////////////////////
 ///////////////////////////////////////////////////////////////
 var UIController = (function(){
     
+    return {
+        getInput: function(){
+           return{
+                var type = document.querySelector('.add__type').value; // will be ether Inc or Exp
+            var description = document.querySelector('.add__description').value;
+            var value = document.querySelector('.add__value').value;
+           }
+        }
+    }
     
 })();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -40,10 +74,7 @@ var controller = (function(budgetCtrl, UICtrl){
         // 5. Display the budget in the UI
         console.log('Radi')
         
-        
     };
-    
-    
     
     
     // Event Listener,  za CLICK NA zelenu kvacicu BTN
