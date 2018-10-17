@@ -74,6 +74,7 @@ var UIController = (function(){
 var controller = (function(budgetCtrl, UICtrl){
     // Trazim modulu 2 varijable, koje  predstavljaju dva modula odozgo, jer app controller ce sve kontrolisati
     
+  
     var setupEventListeners = function(){
         var DOM = UICtrl.getDOMstrings();
         
@@ -115,8 +116,14 @@ var controller = (function(budgetCtrl, UICtrl){
     };
     
     
-
+    return{
+        init: function() {
+            console.log('Application has Started');
+            setupEventListeners();
+        }
+    }
     
  
 })(budgetController, UIController);
 
+controller.init();
