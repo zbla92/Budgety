@@ -25,17 +25,32 @@ var budgetController = (function(){
 ///////////////////////////////////////////////////////////////
 var UIController = (function(){
     
-    return {
-        getInput: function(){
-           return{
-                var type = document.querySelector('.add__type').value; // will be ether Inc or Exp
-            var description = document.querySelector('.add__description').value;
-            var value = document.querySelector('.add__value').value;
-           }
-        }
+    var DOMstrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputBtn: '.add__btn'
+        
     }
     
-})();
+    return {
+        getInput: function(){
+           
+            return{
+                 
+            type: document.querySelector(DOMstrings.inputType).value, // will be ether Inc or Exp
+            description: document.querySelector(DOMstrings.inputDescription).value,
+            value: document.querySelector(DOMstrings.inputValue).value
+            };
+          
+               
+           },
+            
+       getDOMstrings: function(){
+                return DOMstrings;
+    }
+        }
+    })();
 
 
 
@@ -58,12 +73,15 @@ var UIController = (function(){
 ///////////////////////////////////////////////////////////////
 var controller = (function(budgetCtrl, UICtrl){
     // Trazim modulu 2 varijable, koje  predstavljaju dva modula odozgo, jer app controller ce sve kontrolisati
-    
+    var DOM = UICtrl.getDOMstrings();
+    console.log()
     
     // Funkcija koju pozivamo NA KLIK ili na ENTER PRESS
     var ctrlAddItem = function (){
         
         // 1. Get the field input data
+        var input = UICtrl.getInput();
+        console.log(input);
         
         // 2. Add the item to the budget controller
         
@@ -72,13 +90,13 @@ var controller = (function(budgetCtrl, UICtrl){
         // 4. Calculate the budget
         
         // 5. Display the budget in the UI
-        console.log('Radi')
+       
         
     };
     
     
     // Event Listener,  za CLICK NA zelenu kvacicu BTN
-    document.querySelector('.add__btn').addEventListener('click', function(){
+    document.querySelector(DOM.inputBtn).addEventListener('click', function(){
         //Pozicam funkciju jer sam klikno kvacicu
         ctrlAddItem();
         
