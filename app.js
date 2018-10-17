@@ -73,8 +73,28 @@ var UIController = (function(){
 ///////////////////////////////////////////////////////////////
 var controller = (function(budgetCtrl, UICtrl){
     // Trazim modulu 2 varijable, koje  predstavljaju dva modula odozgo, jer app controller ce sve kontrolisati
-    var DOM = UICtrl.getDOMstrings();
-    console.log()
+    
+    var setupEventListeners = function(){
+        var DOM = UICtrl.getDOMstrings();
+        
+                    // Event Listener,  za CLICK NA zelenu kvacicu BTN
+            document.querySelector(DOM.inputBtn).addEventListener('click', function(){
+                //Pozicam funkciju jer sam klikno kvacicu
+                ctrlAddItem();
+
+
+            });
+            //Event Listener kad neko stisne enter bilo gdje
+            document.addEventListener('keypress', function(event){
+                if (13 === event.keyCode || event.which === 13){
+                    // Pozivam funkciju jer sam stisno enter
+                   ctrlAddItem();
+                }
+            })
+    };
+    
+    
+    
     
     // Funkcija koju pozivamo NA KLIK ili na ENTER PRESS
     var ctrlAddItem = function (){
@@ -95,20 +115,7 @@ var controller = (function(budgetCtrl, UICtrl){
     };
     
     
-    // Event Listener,  za CLICK NA zelenu kvacicu BTN
-    document.querySelector(DOM.inputBtn).addEventListener('click', function(){
-        //Pozicam funkciju jer sam klikno kvacicu
-        ctrlAddItem();
-        
-        
-    });
-    //Event Listener kad neko stisne enter bilo gdje
-    document.addEventListener('keypress', function(event){
-        if (13 === event.keyCode || event.which === 13){
-            // Pozivam funkciju jer sam stisno enter
-           ctrlAddItem();
-        }
-    })
+
     
  
 })(budgetController, UIController);
