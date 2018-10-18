@@ -89,7 +89,7 @@ var UIController = (function(){
                  
             type: document.querySelector(DOMstrings.inputType).value, // will be ether Inc or Exp
             description: document.querySelector(DOMstrings.inputDescription).value,
-            value: document.querySelector(DOMstrings.inputValue).value
+            value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             };
           
                
@@ -185,7 +185,13 @@ var controller = (function(budgetCtrl, UICtrl){
             })
     };
     
-    
+    var updateBudget = function(){
+        
+        // 1. Calculate the  budget
+        
+        // 2. Return budget 
+        
+    }
     
     
     // Funkcija koju pozivamo NA KLIK ili na ENTER PRESS
@@ -195,21 +201,21 @@ var controller = (function(budgetCtrl, UICtrl){
         // 1. Get the field input data
         input = UICtrl.getInput();
        
-        
-        // 2. Add the item to the budget controller
-        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-        
-        // 3. Add the item to the UI
-        UICtrl.addListItem(newItem, input.type);
-        
-        // 4. Clear the fields;
-        UICtrl.clearFields();
-        
-        // 4. Calculate the budget
-        
-        // 5. Display the budget in the UI
-       
-        
+        if (input.description !== "" && !isNaN(input.value) && input.value > 0){
+
+            // 2. Add the item to the budget controller
+            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+
+            // 3. Add the item to the UI
+            UICtrl.addListItem(newItem, input.type);
+
+            // 4. Clear the fields;
+            UICtrl.clearFields();
+
+            // 5. Display the budget in the UI
+           updateBudget();
+            
+        }
     };
     
     
@@ -223,4 +229,4 @@ var controller = (function(budgetCtrl, UICtrl){
  
 })(budgetController, UIController);
 
-controller.init();
+controller.init(); 
