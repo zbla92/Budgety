@@ -15,19 +15,51 @@ var budgetController = (function(){
         this.value = value;
     };
 
-})();
 
 
 var data = {
     allItems: {
-        exp: [];
+        exp: [],
         inc: []
     },
     totals: {
         exp: 0,
         inc: 0
     }
-}
+};
+    //Ovaj return ce vratit jedan item kao objekat, znaci citav jedan income ili expense
+    return {
+        addItem: function(type, des, val){
+            var newItem, ID;
+            
+            if (data.allItems[type].length > 0){
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            }else{
+                
+                // Create new ID for new ITEM to store
+                    ID = 0;
+            };
+            
+            //Create new item based on 'inc' or 'exp' value
+            if (type === 'exp'){
+                
+                newItem = new Expense(ID, des, val);
+            }else if(type == 'inc'){
+                newItem = new Income(ID, des, val);
+            }
+            // Push it into our data structure   
+            data.allItems[type].push(newItem);
+            
+            //Return new Item
+            return newItem;
+        },
+        testing: function(){
+            console.log(data);
+        }
+    }
+
+})();
+
 
 
 
@@ -114,12 +146,14 @@ var controller = (function(budgetCtrl, UICtrl){
     
     // Funkcija koju pozivamo NA KLIK ili na ENTER PRESS
     var ctrlAddItem = function (){
+        var input, newItem;
         
         // 1. Get the field input data
-        var input = UICtrl.getInput();
-        console.log(input);
+        input = UICtrl.getInput();
+       
         
         // 2. Add the item to the budget controller
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
         
         // 3. Add the item to the UI
         
