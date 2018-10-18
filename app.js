@@ -3,14 +3,14 @@
 ///////////////////////////////////////////////////////////////
 var budgetController = (function(){
     
-    var Expense = function(ID, description, value){
-        this.ID = ID;
+    var Expense = function(id, description, value){
+        this.id = id;
         this.description = description;
         this.value = value;
     };
     
-    var Income = function(ID, description, value){
-        this.ID = ID;
+    var Income = function(id, description, value){
+        this.id = id;
         this.description = description;
         this.value = value;
     };
@@ -95,8 +95,8 @@ var UIController = (function(){
             
        getDOMstrings: function(){
                 return DOMstrings;
-    }
-        }
+            }
+        };
     })();
 
 
