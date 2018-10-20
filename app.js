@@ -294,7 +294,15 @@ var controller = (function(budgetCtrl, UICtrl){
             if (itemID){
                 
                 //inc-1
-                splitID = itemID.split('-')
+                splitID = itemID.split('-');
+                type = splitID[0];
+                ID = splitID[1];
+                
+                //1. Delete the item from the data structure
+                
+                //2. Delete the item from the UI
+                
+                //3. Update ad show the new budget
             }
         };
     
